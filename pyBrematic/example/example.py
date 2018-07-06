@@ -1,5 +1,7 @@
-# This is an example usage file for the pyBrematic module
+# -*- coding: utf-8 -*-
+"""This is an example usage file for the pyBrematic module"""
 
+from pyBrematic.devices.brennenstuhl.RCS1000N import RCS1000N
 from pyBrematic.devices.device import Device
 from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
 
@@ -11,10 +13,10 @@ system_code = "11110"
 unit_code = "10000"
 
 # Create a new device with the specified codes
-device = Device(system_code, unit_code)
+desk_lamp = RCS1000N(system_code, unit_code)
 
 # Create a new gateway located at the specified IP
-gw = BrennenstuhlGateway("192.168.178.1")
+gw = BrennenstuhlGateway("192.168.178.9")
 
 # Send the request and pass it the device and the action (on/off)
-gw.send_request(device, action)
+gw.send_request(desk_lamp, action)
