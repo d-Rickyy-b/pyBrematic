@@ -9,8 +9,8 @@ from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
 action = Device.ACTION_ON
 
 # Set your system and unit codes
-system_code = "11110"
-unit_code = "10000"
+system_code = "11110"  # Switches 1-4 are in the 'up' position, 5 is 'down'
+unit_code = "10000"  # Switch A is in the 'up' position, B-E are 'down'
 
 # Create a new device with the specified codes
 desk_lamp = RCS1000N(system_code, unit_code)
