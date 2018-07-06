@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Gateway class to inherit from, for 433 MHz gateways"""
+
+
 # Idea and help taken from this websites
 # http://luckow.org/archive/brennenstuhl.html
 # https://www.symcon.de/forum/threads/27143
