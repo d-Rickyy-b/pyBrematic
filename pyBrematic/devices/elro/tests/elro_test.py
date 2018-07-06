@@ -4,12 +4,14 @@ import unittest
 
 from pyBrematic.devices.elro.AB440SA import AB440SA
 from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
+from pyBrematic.gateways.intertechno_gateway import IntertechnoGateway
 
 
 class Elro(unittest.TestCase):
 
     def setUp(self):
-        self.gw = BrennenstuhlGateway("192.168.178.2")
+        self.bsgw = BrennenstuhlGateway("192.168.178.2")
+        self.itgw = IntertechnoGateway("192.168.178.3")
 
     def tearDown(self):
         pass
@@ -19,8 +21,14 @@ class Elro(unittest.TestCase):
         unit_code = "00100"
         device = AB440SA(system_code=system_code, unit_code=unit_code)
 
-        on_signal = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,32,0"
-        off_signal = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,32,0"
+        on_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,32,0"
+        off_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,32,0"
 
-        self.assertEqual(device.get_signal(self.gw, device.ACTION_ON), on_signal)
-        self.assertEqual(device.get_signal(self.gw, device.ACTION_OFF), off_signal)
+        self.assertEqual(device.get_signal(self.itgw, device.ACTION_ON), on_signal_ITGW)
+        self.assertEqual(device.get_signal(self.itgw, device.ACTION_OFF), off_signal_ITGW)
+
+        on_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,14;"
+        off_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,14;"
+
+        self.assertEqual(device.get_signal(self.bsgw, device.ACTION_ON), on_signal_BSGW)
+        self.assertEqual(device.get_signal(self.bsgw, device.ACTION_OFF), off_signal_BSGW)

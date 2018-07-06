@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from pyBrematic.devices.device import Device
+from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
+from pyBrematic.gateways.intertechno_gateway import IntertechnoGateway
 
 
 class AB440SA(Device):
@@ -11,14 +13,20 @@ class AB440SA(Device):
     seq_high = lo + hi + hi + lo
 
     sRepeat = 10
-    sPause = 11200
+    sPauseBS = 5600
+    sPauseIT = 11200
     sTune = 350
-    sBaud = 26
-    sSpeed = 32
+    sBaudBS = 25
+    sBaudIT = 26
+    sSpeedBS = 14
+    sSpeedIT = 32
     txversion = 1
 
-    head = "0,0,{},{},{},{},0,".format(sRepeat, sPause, sTune, sBaud)
-    tail = "{},{},0".format(txversion, sSpeed)
+    headITGW = "0,0,{},{},{},{},0,".format(sRepeat, sPauseIT, sTune, sBaudIT)
+    tailITGW = "{},{},0".format(txversion, sSpeedIT)
+
+    headBSGW = "TXP:0,0,{},{},{},{},".format(sRepeat, sPauseBS, sTune, sBaudBS)
+    tailBSGW = "{},{};".format(txversion, sSpeedBS)
 
     on = seq_low + seq_high
     off = seq_high + seq_low
@@ -44,11 +52,18 @@ class AB440SA(Device):
         system_msg = self.encode(self.system_code, self.seq_low, self.seq_high)
         unit_msg = self.encode(self.unit_code, self.seq_low, self.seq_high)
 
+        if isinstance(gateway, BrennenstuhlGateway):
+            head = self.headBSGW
+            tail = self.tailBSGW
+        elif isinstance(gateway, IntertechnoGateway):
+            head = self.headITGW
+            tail = self.tailITGW
+
         # Build the payload of the UDP package depending on the action.
         if action == self.ACTION_ON:
-            data = self.head + system_msg + unit_msg + self.on + self.tail
+            data = head + system_msg + unit_msg + self.on + tail
         elif action == self.ACTION_OFF:
-            data = self.head + system_msg + unit_msg + self.off + self.tail
+            data = head + system_msg + unit_msg + self.off + tail
         else:
             raise ValueError("Value of 'action' isn't valid!")
 
