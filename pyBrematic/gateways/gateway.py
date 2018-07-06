@@ -6,7 +6,7 @@
 class Gateway(object):
 
     # '49880' is the standard port for the Brennenstuhl GWY 433
-    def __init__(self, ip, port=49880):
+    def __init__(self, ip, port):
         self._ip = ip
         self._port = port
 
