@@ -33,5 +33,6 @@ class CMR1000(Device):
     on = lo + hi + lo + hi + hi
     off = hi + lo + lo + hi + lo
 
+# TODO implement missing methods
 # See here
 # https://github.com/Power-Switch/PowerSwitch_Android/blob/master/Smartphone/src/main/java/eu/power_switch/obj/receiver/device/intertechno/CMR1000.java

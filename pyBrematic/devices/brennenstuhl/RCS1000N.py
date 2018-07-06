@@ -57,6 +57,7 @@ class RCS1000N(Device):
         return encoded_msg
 
     def get_signal(self, gateway, action):
+        """Returns a signal which triggers a device to execute the intended action"""
         # Encoding the system_code and unit_code
         system_msg = self.encode(self.system_code, self.seq_low, self.seq_high)
         unit_msg = self.encode(self.unit_code, self.seq_low, self.seq_high)

@@ -11,4 +11,5 @@ class Device(object):
         self.unit_code = unit_code
 
     def get_signal(self, gateway, action):
+        """Returns a signal which triggers a device to execute the intended action"""
         raise NotImplementedError("Subclasses must implement this method!")
