@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from pyBrematic.devices.device import Device
-from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
-from pyBrematic.gateways.intertechno_gateway import IntertechnoGateway
+from pyBrematic.devices import Device
+from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
+
 
 # SYSTEM-CODE | unit code
 #  1 2 3 4 5  | A B C D E

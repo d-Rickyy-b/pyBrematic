@@ -2,14 +2,12 @@
 
 import unittest
 
-from pyBrematic.devices.brennenstuhl.RCR1000N import RCR1000N
-from pyBrematic.devices.brennenstuhl.RCS1000N import RCS1000N
-from pyBrematic.devices.device import Device
-from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
-from pyBrematic.gateways.intertechno_gateway import IntertechnoGateway
+from pyBrematic.devices.brennenstuhl import RCR1000N, RCS1000N
+from pyBrematic.devices import Device
+from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 
 
-class Devices(unittest.TestCase):
+class Brennenstuhl(unittest.TestCase):
 
     def setUp(self):
         self.bsgw = BrennenstuhlGateway("192.168.178.2")

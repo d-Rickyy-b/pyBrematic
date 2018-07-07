@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """This is an example usage file for the pyBrematic module"""
 
-from pyBrematic.devices.brennenstuhl.RCS1000N import RCS1000N
-from pyBrematic.devices.device import Device
-from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
+from pyBrematic.devices.brennenstuhl import RCS1000N
+from pyBrematic.devices import Device
+from pyBrematic.gateways import BrennenstuhlGateway
 
 # Setting the standard action to "on"
 action = Device.ACTION_ON

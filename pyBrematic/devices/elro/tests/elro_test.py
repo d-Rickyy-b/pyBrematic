@@ -2,9 +2,8 @@
 
 import unittest
 
-from pyBrematic.devices.elro.AB440SA import AB440SA
-from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
-from pyBrematic.gateways.intertechno_gateway import IntertechnoGateway
+from pyBrematic.devices.elro import AB440SA
+from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 
 
 class Elro(unittest.TestCase):

@@ -2,8 +2,8 @@
 
 import unittest
 
-from pyBrematic.devices.device import Device
-from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
+from pyBrematic.devices import Device
+from pyBrematic.gateways import BrennenstuhlGateway
 
 
 class Devices(unittest.TestCase):
