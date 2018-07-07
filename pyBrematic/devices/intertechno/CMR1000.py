@@ -9,15 +9,15 @@ class CMR1000(Device):
     sPause = 11125
     sTune = 89
     sBaud = 25
-    sSpeed_conn_air = 16
-    sSpeed_ITGW = 125
+    sSpeedBS = 16
+    sSpeedIT = 125
     txversion = 1
 
-    head_conn_air = "TXP:0,0,{},{},{},{},".format(sRepeat, sPause, sTune, sBaud)
-    head_ITGW = "0,0,{},{},{},{},0,".format(sRepeat, sPause, sTune, sBaud + 1)
+    headBSGW = "TXP:0,0,{},{},{},{},".format(sRepeat, sPause, sTune, sBaud)
+    headITGW = "0,0,{},{},{},{},0,".format(sRepeat, sPause, sTune, sBaud + 1)
 
-    tail_conn_air = "{},1,{};".format(txversion, sSpeed_conn_air)
-    tail_ITGW = "{},{},0".format(txversion, sSpeed_ITGW)
+    tail_conn_air = "{},1,{};".format(txversion, sSpeedBS)
+    tail_ITGW = "{},{},0".format(txversion, sSpeedIT)
 
     # Values of high and low bits (binary -> encoded)
     # bit_low:  0 -> 1 | bit_high: 1 -> 3
