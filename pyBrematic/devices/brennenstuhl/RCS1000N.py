@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from pyBrematic.devices.device import Device
-
+from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
+from pyBrematic.gateways.intertechno_gateway import IntertechnoGateway
 
 # SYSTEM-CODE | unit code
 #  1 2 3 4 5  | A B C D E
@@ -17,28 +18,34 @@ class RCS1000N(Device):
     # Check http://luckow.org/archive/brennenstuhl.html (german) for more info about this.
     # Parameters for the requests. Only change if you have good reasons for it
     sRepeat = 10
-    sPause = 5600
+    sPauseBS = 5600
+    sPauseIT = 11200
     sTune = 350
-    sBaud = 25
-    sSpeed = 16
+    sBaudBS = 25
+    sBaudIT = 26
+    sSpeedBS = 16
+    sSpeedIT = 32
     txversion = 1
 
-    head = "TXP:0,0,{},{},{},{},".format(sRepeat, sPause, sTune, sBaud)
-    tail = "{},1,{};".format(txversion, sSpeed)
+    headBSGW = "TXP:0,0,{},{},{},{},".format(sRepeat, sPauseBS, sTune, sBaudBS)
+    tailBSGW = "{},{};".format(txversion, sSpeedBS)
+
+    headITGW = "0,0,{},{},{},{},0,".format(sRepeat, sPauseIT, sTune, sBaudIT)
+    tailITGW = "{},{},0".format(txversion, sSpeedIT)
 
     # Values of high and low bits (binary -> encoded)
     # bit_low:  0 -> 1 | bit_high: 1 -> 3
     lo = "1,"
     hi = "3,"
 
-    seq_low = hi + hi + lo + lo
-    seq_high = hi + lo + hi + lo
+    seq_low = lo + hi + lo + hi
+    seq_high = lo + hi + hi + lo
 
     # These sequences are the commands for switching a device on or off
     # On:  01011 -> encoded: 13133
     # Off: 10010 -> encoded: 31131
-    on = lo + hi + lo + hi + hi
-    off = hi + lo + lo + hi + lo
+    on = seq_low + seq_high
+    off = seq_high + seq_low
 
     def __init__(self, system_code, unit_code):
         super().__init__(system_code, unit_code)
@@ -49,9 +56,9 @@ class RCS1000N(Device):
         encoded_msg = ""
         for bit in code:
             if bit == "0":
-                encoded_msg += seq_low
-            elif bit == "1":
                 encoded_msg += seq_high
+            elif bit == "1":
+                encoded_msg += seq_low
             else:
                 raise ValueError("Invalid value in system_code or unit_code!")
         return encoded_msg
@@ -62,11 +69,18 @@ class RCS1000N(Device):
         system_msg = self.encode(self.system_code, self.seq_low, self.seq_high)
         unit_msg = self.encode(self.unit_code, self.seq_low, self.seq_high)
 
+        if isinstance(gateway, BrennenstuhlGateway):
+            head = self.headBSGW
+            tail = self.tailBSGW
+        elif isinstance(gateway, IntertechnoGateway):
+            head = self.headITGW
+            tail = self.tailITGW
+
         # Build the payload of the UDP package depending on the action.
         if action == self.ACTION_ON:
-            data = self.head + self.lo + system_msg + unit_msg + self.hi + self.on + self.tail
+            data = head + system_msg + unit_msg + self.on + tail
         elif action == self.ACTION_OFF:
-            data = self.head + self.lo + system_msg + unit_msg + self.hi + self.off + self.tail
+            data = head + system_msg + unit_msg + self.off + tail
         else:
             raise ValueError("Value of 'action' isn't valid!")
 
