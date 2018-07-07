@@ -4,8 +4,8 @@ import socket
 from pyBrematic.gateways.gateway import Gateway
 
 
-class BrennenstuhlGateway(Gateway):
-    """Gateway class for the Brennenstuhl Brematic Gateway GWY 433 1294100"""
+class IntertechnoGateway(Gateway):
+    """Gateway class for the Intertechno Gateway ITGW-433"""
 
     def __init__(self, ip, port=49880):
         super().__init__(ip, port)
