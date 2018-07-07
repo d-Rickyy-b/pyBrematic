@@ -14,7 +14,8 @@ class Devices(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_a(self):
+    def test_Device(self):
+        """Test to make sure that call to method raises an exception"""
         dev = Device("10000", "00100")
         with self.assertRaises(NotImplementedError):
             dev.get_signal(self.gw, Device.ACTION_ON)
