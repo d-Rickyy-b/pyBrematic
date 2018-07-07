@@ -9,6 +9,3 @@ class PAR1500(CMR1000):
 
     def __init__(self, system_code, unit_code):
         super().__init__(system_code, unit_code)
-
-    def get_signal(self, gateway, action):
-        super().get_signal(gateway, action)
