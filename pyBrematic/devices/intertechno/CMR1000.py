@@ -33,6 +33,9 @@ class CMR1000(Device):
     off = seq_fl + seq_low
     additional = seq_low + seq_fl
 
+    def __init__(self, system_code, unit_code):
+        super().__init__(system_code, unit_code)
+
     # Method for encoding the system_code or unit_code from binary to a gateway-readable format
     @staticmethod
     def encode(code, seq_low, seq_high):
