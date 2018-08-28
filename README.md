@@ -15,4 +15,4 @@ If you have multiple versions of Python installed, make sure to use the Python 3
 And if you are having issues with installing the package, try to use the `--user` switch, to [install it to your home directory](https://stackoverflow.com/questions/42988977/what-is-the-purpose-pip-install-user).
 
 ### Example usage
-To check out how to use the module, go to the [example file](https://github.com/d-Rickyy-b/pyBrematic/blob/master/pyBrematic/example/main.py) where I wrote a little example script, to show how to use the module.
+To check out how to use the module, go to the [example file](https://github.com/d-Rickyy-b/pyBrematic/blob/master/pyBrematic/example/example.py) where I wrote a little example script, to show how to use the module.
