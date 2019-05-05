@@ -42,10 +42,10 @@ class TestStorage(unittest.TestCase):
                 self.assertEqual(5388254612384, d.seed)
 
     def test_store(self):
+        self.maxDiff = None
         path = self.storage._get_current_path()
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
-        print(content)
 
         devs = list()
         devs.append(Device(0, 879123789812))
