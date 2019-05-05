@@ -23,7 +23,7 @@ class ITL500(AutoPairDevice):
     off = seq_low + seq_low + seq_low
     additional = seq_low + seq_low
 
-    def __init__(self, device_id, seed):
+    def __init__(self, device_id, seed=None):
         super().__init__(device_id, seed)
 
     def get_signal(self, gateway, action):
