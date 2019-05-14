@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Device class representing a remote socket-outlet"""
+"""Device class representing a remote-controlled receiver"""
 
 
 class Device(object):
