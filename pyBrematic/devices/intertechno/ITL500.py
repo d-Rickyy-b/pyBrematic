@@ -2,7 +2,7 @@
 from pyBrematic.devices import AutoPairDevice, Action
 from pyBrematic.exceptions import GatewayNotSupportedException
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
-from pyBrematic.utils import Storage, Rand
+from pyBrematic.utils import Rand
 
 
 class ITL500(AutoPairDevice):
