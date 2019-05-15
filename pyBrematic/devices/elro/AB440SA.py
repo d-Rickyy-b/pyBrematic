@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from pyBrematic.gateways.brennenstuhl_gateway import BrennenstuhlGateway
-from pyBrematic.gateways.intertechno_gateway import IntertechnoGateway
 from pyBrematic.devices import Device, Action
+from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 
 
 class AB440SA(Device):
