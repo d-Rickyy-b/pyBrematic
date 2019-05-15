@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import os
-import logging
 import json
+import logging
+import os
 import random
 
 from pyBrematic.utils import singleton, DataEncoder
@@ -94,7 +94,7 @@ class Device(object):
 
     @staticmethod
     def _generate_seed():
-        return random.randint(0, 2**63-1)
+        return random.randint(0, 2 ** 63 - 1)
 
     def to_json(self):
         return json.dumps(self.to_dict(), cls=DataEncoder)

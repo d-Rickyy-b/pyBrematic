@@ -12,6 +12,7 @@ def singleton(cls):
             instance = cls(*args, **kwargs)
             __instances[cls] = instance
         return instance
+
     return getInstance
 
 
