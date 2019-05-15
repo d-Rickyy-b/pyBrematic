@@ -2,7 +2,7 @@
 
 import unittest
 
-from pyBrematic.devices import Device
+from pyBrematic.devices import Device, Action
 from pyBrematic.devices.brennenstuhl import RCR1000N, RCS1000N
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 
@@ -23,14 +23,14 @@ class Brennenstuhl(unittest.TestCase):
         on_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,32,0"
         off_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,32,0"
 
-        self.assertEqual(on_signal_ITGW, dev.get_signal(self.itgw, Device.ACTION_ON))
-        self.assertEqual(off_signal_ITGW, dev.get_signal(self.itgw, Device.ACTION_OFF))
+        self.assertEqual(on_signal_ITGW, dev.get_signal(self.itgw, Action.ON))
+        self.assertEqual(off_signal_ITGW, dev.get_signal(self.itgw, Action.OFF))
 
         on_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,16;"
         off_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,16;"
 
-        self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Device.ACTION_ON))
-        self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Device.ACTION_OFF))
+        self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Action.ON))
+        self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Action.OFF))
 
     def test_RCS1000N(self):
         """Test to check the functionality of the RCS1000N class"""
@@ -39,11 +39,11 @@ class Brennenstuhl(unittest.TestCase):
         on_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,32,0"
         off_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,32,0"
 
-        self.assertEqual(on_signal_ITGW, dev.get_signal(self.itgw, Device.ACTION_ON))
-        self.assertEqual(off_signal_ITGW, dev.get_signal(self.itgw, Device.ACTION_OFF))
+        self.assertEqual(on_signal_ITGW, dev.get_signal(self.itgw, Action.ON))
+        self.assertEqual(off_signal_ITGW, dev.get_signal(self.itgw, Action.OFF))
 
         on_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,16;"
         off_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,16;"
 
-        self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Device.ACTION_ON))
-        self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Device.ACTION_OFF))
+        self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Action.ON))
+        self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Action.OFF))

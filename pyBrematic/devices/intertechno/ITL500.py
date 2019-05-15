@@ -43,14 +43,14 @@ class ITL500(AutoPairDevice):
             raise GatewayNotSupportedException
 
         # Build the payload of the UDP package depending on the action.
-        if action == self.ACTION_UNPAIR_ALL:
+        if action == Action.UNPAIR_ALL:
             for i in range(24):
                 signal += self.lo
 
             signal += self.lo + self.lo + self.hi + self.lo
             signal += self.lo + self.lo + self.lo + self.lo
 
-        elif action == self.ACTION_UP or action == self.ACTION_PAIR:
+        elif action == Action.UP or action == Action.PAIR:
             # When the receiver is in pairing mode, the first ON signal sent to the device will be stored by it.
             # Using a prng and a stored seed to generate the same number sequence in each request
             signal += self.hi
@@ -72,7 +72,7 @@ class ITL500(AutoPairDevice):
             signal += self.additional
 
             data = head + signal + tail
-        elif action == self.ACTION_DOWN or action == self.ACTION_UNPAIR:
+        elif action == Action.DOWN or action == Action.UNPAIR:
             signal += self.hi
 
             for i in range(24):
