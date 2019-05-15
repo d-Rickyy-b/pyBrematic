@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 """Device class representing a remote-controllable receiver"""
 from pyBrematic.utils import Storage
+from .action import Action
 
 
 class AutoPairDevice(object):
-    ACTION_OFF = 0
-    ACTION_ON = 1
-    ACTION_UP = 2
-    ACTION_DOWN = 3
-    ACTION_PAIR = 4
-    ACTION_UNPAIR = 5
-    ACTION_UNPAIR_ALL = 6
+    ACTION_OFF = Action.OFF
+    ACTION_ON = Action.ON
+    ACTION_UP = Action.UP
+    ACTION_DOWN = Action.DOWN
+    ACTION_PAIR = Action.PAIR
+    ACTION_UNPAIR = Action.UNPAIR
+    ACTION_UNPAIR_ALL = Action.UNPAIR_ALL
 
     def __init__(self, device_id, seed):
         self.device_id = device_id

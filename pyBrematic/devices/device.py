@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """Device class representing a remote-controlled receiver"""
+from .action import Action
 
 
 class Device(object):
-    ACTION_OFF = 0
-    ACTION_ON = 1
+    ACTION_OFF = Action.OFF
+    ACTION_ON = Action.ON
 
     def __init__(self, system_code, unit_code):
         self.system_code = system_code
