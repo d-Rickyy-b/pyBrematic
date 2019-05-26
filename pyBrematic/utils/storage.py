@@ -89,6 +89,11 @@ class Storage(object):
 class Device(object):
 
     def __init__(self, device_id, seed=None):
+        """
+        Device class which holds data of a certain 433 MHz device
+        :param device_id: A unique identifier of the device
+        :param seed: (Optional) The seed used to generate payload data
+        """
         self.device_id = device_id
         self.seed = seed or self._generate_seed()
 
