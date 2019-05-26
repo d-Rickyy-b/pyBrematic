@@ -7,7 +7,7 @@ from pyBrematic.devices.intertechno import PAR1500, CMR1000, ITR3500
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 
 
-class Intertechno(unittest.TestCase):
+class TestIntertechno(unittest.TestCase):
 
     def setUp(self):
         self.bsgw = BrennenstuhlGateway("192.168.178.2")

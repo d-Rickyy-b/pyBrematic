@@ -7,7 +7,7 @@ from pyBrematic.devices.elro import AB440SA
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 
 
-class Elro(unittest.TestCase):
+class TestElro(unittest.TestCase):
 
     def setUp(self):
         self.bsgw = BrennenstuhlGateway("192.168.178.2")

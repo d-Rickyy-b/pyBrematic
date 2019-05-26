@@ -6,7 +6,7 @@ from pyBrematic.devices import Device, Action
 from pyBrematic.gateways import BrennenstuhlGateway
 
 
-class Devices(unittest.TestCase):
+class TestDevice(unittest.TestCase):
 
     def setUp(self):
         self.gw = BrennenstuhlGateway("192.168.178.2")
