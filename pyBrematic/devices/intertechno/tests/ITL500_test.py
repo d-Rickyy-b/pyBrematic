@@ -4,6 +4,8 @@ import unittest
 from pyBrematic.devices import AutoPairDevice
 from pyBrematic.devices.intertechno import ITL500
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
+from pyBrematic.exceptions import GatewayNotSupportedException
+from unittest.mock import Mock
 
 
 class TestITL500(unittest.TestCase):
@@ -13,6 +15,16 @@ class TestITL500(unittest.TestCase):
 
         seed = 8712387
         self.dev = ITL500(123, seed)
+
+    def test_invalid_gateway(self):
+        with self.assertRaises(GatewayNotSupportedException):
+            fake_gateway = Mock()
+            self.dev.get_signal(fake_gateway, AutoPairDevice.ACTION_UP)
+
+    def test_invalid_action(self):
+        with self.assertRaises(ValueError):
+            fake_action = Mock()
+            self.dev.get_signal(self.itgw, fake_action)
 
     def test_up_intertechno(self):
         up_signal_ITGW = "0,0,5,10976,98,67,0,3,29," + "15,3,15,15,3,15,15,3,15,15,3,3,15,3,3,15,15,15,3,15,15,15,15,3,15,3,3,3,15,3,3,3,15,3,15,3,3,3,3,3,3,3,15,3,3,3,15," + "3,112,0"
