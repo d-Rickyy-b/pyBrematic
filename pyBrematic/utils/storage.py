@@ -108,7 +108,7 @@ class Device(object):
         return random.randint(0, 2 ** 63 - 1)
 
     def to_json(self):
-        return json.dumps(self.to_dict(), cls=DataEncoder)
+        return json.dumps(self.to_dict(), cls=DataEncoder, sort_keys=True)
 
     def to_dict(self):
         return dict(device_id=self.device_id, seed=self.seed)
