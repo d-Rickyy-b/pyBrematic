@@ -47,3 +47,11 @@ class TestITL500(unittest.TestCase):
         down_signal_BSGW = "TXP:0,0,5,10976,98,66,3,29," + "15,3,15,15,3,3,3,3,3,15,3,3,15,15,3,3,15,15,3,3,15,15,15,3,15,3,3,3,15,3,3,3,15,3,3,3,15,3,3,3,3,3,15,3,3,3,15," + "3,126"
         self.assertEqual(up_signal_BSGW, dev_new.get_signal(self.bsgw, AutoPairDevice.ACTION_UP))
         self.assertEqual(down_signal_BSGW, dev_new.get_signal(self.bsgw, AutoPairDevice.ACTION_DOWN))
+
+    def test_unpair_all_intertechno(self):
+        unpair_signal_ITGW = "0,0,5,10976,98,67,0,3,29," + "3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,15,3,3,3,3,3," + "3,112,0"
+        self.assertEqual(unpair_signal_ITGW, self.dev.get_signal(self.itgw, AutoPairDevice.ACTION_UNPAIR_ALL))
+
+    def test_unpair_all_brennenstuhl(self):
+        unpair_signal_BSGW = "TXP:0,0,5,10976,98,66,3,29," + "3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,15,3,3,3,3,3," + "3,126"
+        self.assertEqual(unpair_signal_BSGW, self.dev.get_signal(self.bsgw, AutoPairDevice.ACTION_UNPAIR_ALL))
