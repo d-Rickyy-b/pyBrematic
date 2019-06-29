@@ -83,6 +83,16 @@ class TestStorage(unittest.TestCase):
         self.assertEqual(dev.device_id, device_id)
         self.assertEqual(dev.seed, seed)
 
+    def test_duplicate_storage(self):
+        self.storage.add_device(1337)
+        self.assertEqual(1, len(self.storage.devices))
+
+        self.storage.add_device(1337)
+        self.assertEqual(1, len(self.storage.devices))
+
+        self.storage.add_device(42)
+        self.assertEqual(2, len(self.storage.devices))
+
     def test_get_seed(self):
         device_id = 1337
 
