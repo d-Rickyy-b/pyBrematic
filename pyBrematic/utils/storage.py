@@ -59,10 +59,16 @@ class Storage(object):
         self.devices.append(Device(device_id, seed))
         self._store(self.path)
 
-    def get_seed(self, device_id):
+    def get_seed(self, device_id, loop_prevent=0):
         for device in self.devices:
             if device.device_id == device_id:
                 return device.seed
+
+        # Add the device if it's not present already
+        self.add_device(device_id)
+        if loop_prevent > 2:
+            raise Exception("Something went wrong while storing new device!")
+        return self.get_seed(device_id, loop_prevent+1)
 
     @staticmethod
     def _get_current_path():
