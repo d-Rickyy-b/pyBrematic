@@ -50,6 +50,8 @@ class ITL500(AutoPairDevice):
             signal += self.lo + self.lo + self.hi + self.lo
             signal += self.lo + self.lo + self.lo + self.lo
 
+            data = head + signal + tail
+
         elif action == Action.UP or action == Action.PAIR:
             # When the receiver is in pairing mode, the first ON signal sent to the device will be stored by it.
             # Using a prng and a stored seed to generate the same number sequence in each request
