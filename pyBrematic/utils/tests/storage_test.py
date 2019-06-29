@@ -83,6 +83,15 @@ class TestStorage(unittest.TestCase):
         self.assertEqual(dev.device_id, device_id)
         self.assertEqual(dev.seed, seed)
 
+    def test_get_seed(self):
+        device_id = 1337
+
+        seed = self.storage.get_seed(device_id)
+        second_seed = self.storage.get_seed(device_id)
+
+        self.assertEqual(type(seed), int)
+        self.assertEqual(seed, second_seed)
+
     def test_singleton(self):
         storage2 = Storage()
 
