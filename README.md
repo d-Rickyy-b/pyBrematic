@@ -16,3 +16,6 @@ And if you are having issues with installing the package, try to use the `--user
 
 ### Example usage
 To check out how to use the module, go to the [example file](https://github.com/d-Rickyy-b/pyBrematic/blob/master/pyBrematic/example/example.py) where I wrote a little example script, to show how to use the module.
+
+### Important notice
+Since all data packets are sent to the gateways via [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol), it cannot be guaranteed, that all requests will be transmitted to the gateway. For critical purposes you cannot rely on sending the signal once.

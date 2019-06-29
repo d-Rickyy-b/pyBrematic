@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from pyBrematic.devices import Device
+from pyBrematic.devices import Device, Action
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 
 
@@ -77,9 +77,9 @@ class RCS1000N(Device):
             tail = self.tailITGW
 
         # Build the payload of the UDP package depending on the action.
-        if action == self.ACTION_ON:
+        if action == Action.ON:
             data = head + system_msg + unit_msg + self.on + tail
-        elif action == self.ACTION_OFF:
+        elif action == Action.OFF:
             data = head + system_msg + unit_msg + self.off + tail
         else:
             raise ValueError("Value of 'action' isn't valid!")
