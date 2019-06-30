@@ -60,6 +60,7 @@ class TestStorage(unittest.TestCase):
 
         with open(path, "r", encoding="utf-8") as f:
             content2 = f.read()
+            print(content2)
 
         self.assertNotEqual(content, content2)
         self.assertEqual('{"data" : { \
