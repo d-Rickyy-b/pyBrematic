@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 import unittest
 
 from pyBrematic.utils import Storage
@@ -47,29 +48,43 @@ class TestStorage(unittest.TestCase):
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        devs = list()
-        devs.append(Device(0, 879123789812))
-        devs.append(Device(1, 903482973490))
-        devs.append(Device(2, 834348900123))
-        devs.append(Device(3, 499832476341))
-
+        devs = [Device(0, 879123789812), Device(1, 903482973490), Device(2, 834348900123), Device(3, 499832476341)]
         self.storage.devices = devs
-
-        # self.storage.add_device(device_id, seed)
         self.storage._store(path)
 
         with open(path, "r", encoding="utf-8") as f:
             content2 = f.read()
+            content2 = json.loads(content2)
 
-        self.assertNotEqual(content, content2)
-        self.assertEqual('{"data" : { \
-                            "devices" : [ \
-                                {"device_id":0,"seed":879123789812}, \
-                                {"device_id":1,"seed":903482973490}, \
-                                {"device_id":2,"seed":834348900123}, \
-                                {"device_id":3,"seed":499832476341} \
-                            ] \
-                        }}'.replace(" ", ""), content2.replace(" ", ""))
+        self.assertNotEqual(content, content2, "The storage file did not change!")
+
+        test = [dict(device_id=0, seed=879123789812),
+                dict(device_id=1, seed=903482973490),
+                dict(device_id=2, seed=834348900123),
+                dict(device_id=3, seed=499832476341)]
+
+        testd = dict(data=dict(devices=test))
+        self.assertEqual(sorted(testd.items()), sorted(content2.items()))
+
+        test_devices = testd.get("data").get("devices")
+        stored_devices = content2.get("data").get("devices")
+
+        self.assertEqual(4, len(test_devices))
+        self.assertEqual(4, len(stored_devices))
+
+        # Workaround for behaviour in python 3.4 where dicts are not sorted.
+        # We need to loop through all elements in each lists and compare the right ones.
+        # If found we assert they are equal. If not, we fail the test.
+        for devt in test_devices:
+            counter = 0
+            for devs in stored_devices:
+                if devt.get("device_id") == devs.get("device_id"):
+                    self.assertEqual(devt.get("seed"), devs.get("seed"))
+                    break
+
+                counter += 1
+                if counter >= len(test_devices):
+                    self.fail("Couldn't find fitting device_id!")
 
     def test_add_device(self):
         device_id = 1337
