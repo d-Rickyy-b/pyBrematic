@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """This is an example usage file for the pyBrematic module"""
 
-from pyBrematic.devices import Action
 from pyBrematic.devices.brennenstuhl import RCS1000N
 from pyBrematic.gateways import BrennenstuhlGateway
 
@@ -16,5 +15,5 @@ desk_lamp = RCS1000N(system_code, unit_code)
 gw = BrennenstuhlGateway("192.168.178.9")
 
 # Send the request and pass it the device and the action (on/off)
-gw.send_request(desk_lamp, Action.ON)
-gw.send_request(desk_lamp, Action.OFF)
+gw.send_request(desk_lamp, desk_lamp.ACTION_ON)
+gw.send_request(desk_lamp, desk_lamp.ACTION_OFF)
