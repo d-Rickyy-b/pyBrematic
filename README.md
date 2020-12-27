@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.com/d-Rickyy-b/pyBrematic.svg?branch=master)](https://travis-ci.com/d-Rickyy-b/pyBrematic) [![Coverage Status](https://coveralls.io/repos/github/d-Rickyy-b/pyBrematic/badge.svg?branch=master)](https://coveralls.io/github/d-Rickyy-b/pyBrematic?branch=master)
+[![Build Status](https://travis-ci.com/d-Rickyy-b/pyBrematic.svg?branch=master)](https://travis-ci.com/d-Rickyy-b/pyBrematic)
+[![PyPI version](https://badge.fury.io/py/pyBrematic.svg)](https://pypi.org/project/pyBrematic)
+[![Coverage Status](https://coveralls.io/repos/github/d-Rickyy-b/pyBrematic/badge.svg?branch=master)](https://coveralls.io/github/d-Rickyy-b/pyBrematic?branch=master)
 
 # pyBrematic
 This project offers a home for controlling your remote power outlets (and potentially other stuff) with the Python programming language. With the help of the community we might get other devices working aswell.
