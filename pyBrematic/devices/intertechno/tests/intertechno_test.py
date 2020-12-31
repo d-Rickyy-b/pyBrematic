@@ -45,6 +45,21 @@ class TestIntertechno(unittest.TestCase):
         on_signal_BSGW = "TXP:0,0,6,11125,89,25,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,12,4,4,12,4,12,4,12,4,12,4,12,12,4,4,12,12,4,4,12,12,4,1,140;"
         off_signal_BSGW = "TXP:0,0,6,11125,89,25,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,4,12,12,4,4,12,4,12,4,12,4,12,4,12,12,4,4,12,12,4,4,12,4,12,1,140;"
 
+        system_code = dev.calc_systemcode("A")
+        unit_code = dev.calc_unitcode(5)
+        dev2 = CMR1000(system_code, unit_code)
+
+        self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Action.ON))
+        self.assertEqual(on_signal_BSGW, dev2.get_signal(self.bsgw, Action.ON))
+        self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Action.OFF))
+        self.assertEqual(off_signal_BSGW, dev2.get_signal(self.bsgw, Action.OFF))
+
+    def test_CMR1000_generation(self):
+        system_code = CMR1000.calc_systemcode("P")
+        unit_code = CMR1000.calc_unitcode(16)
+        dev = CMR1000(system_code, unit_code)
+        on_signal_BSGW = "TXP:0,0,6,11125,89,25,4,12,12,4,4,12,12,4,4,12,12,4,4,12,12,4,4,12,12,4,4,12,12,4,4,12,12,4,4,12,12,4,4,12,4,12,4,12,12,4,4,12,12,4,4,12,12,4,1,140;"
+        off_signal_BSGW = "TXP:0,0,6,11125,89,25,4,12,12,4,4,12,12,4,4,12,12,4,4,12,12,4,4,12,12,4,4,12,12,4,4,12,12,4,4,12,12,4,4,12,4,12,4,12,12,4,4,12,12,4,4,12,4,12,1,140;"
         self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Action.ON))
         self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Action.OFF))
 
@@ -63,3 +78,21 @@ class TestIntertechno(unittest.TestCase):
 
         self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Action.ON))
         self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Action.OFF))
+
+    def test_calc_unitcode(self):
+        with self.assertRaises(expected_exception=ValueError):
+            CMR1000.calc_unitcode(-1)
+
+        with self.assertRaises(expected_exception=ValueError):
+            CMR1000.calc_unitcode(17)
+
+    def test_calc_systemcode(self):
+        with self.assertRaises(expected_exception=ValueError):
+            CMR1000.calc_systemcode("Z")
+
+        with self.assertRaises(expected_exception=ValueError):
+            CMR1000.calc_systemcode("-")
+
+
+if __name__ == "__main__":
+    unittest.main()
