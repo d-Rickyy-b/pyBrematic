@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from pyBrematic.devices.device import Device
+from pyBrematic.devices.intertechno import IntertechnoDevice
 from pyBrematic.exceptions import GatewayNotSupportedException
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 
 
-class CMR1000(Device):
+class CMR1000(IntertechnoDevice):
     """Device class for the Intertechno CMR-1000 remote outlet"""
     sRepeat = 6
     sPause = 11125
