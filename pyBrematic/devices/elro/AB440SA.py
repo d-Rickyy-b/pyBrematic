@@ -5,7 +5,7 @@ from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 
 
 class AB440SA(Device):
-    """Device class for the ELRO AB440SA  remote outlet"""
+    """Device class for the ELRO AB440SA remote outlet"""
     lo = "1,"
     hi = "3,"
     seq_low = lo + hi + lo + hi
