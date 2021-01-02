@@ -108,6 +108,25 @@ class TestIntertechnoTools(unittest.TestCase):
         self.assertEqual(system3, calc_systemcode("F"))
         self.assertEqual(unit3, calc_unitcode(8))
 
+    def test_calc_system_and_unit_code_issue(self):
+        """Test if wrong input raises a ValueError"""
+        with self.assertRaises(ValueError):
+            _, _ = calc_system_and_unit_code("Q5")
+
+        with self.assertRaises(ValueError):
+            _, _ = calc_system_and_unit_code("R18")
+
+        with self.assertRaises(ValueError):
+            _, _ = calc_system_and_unit_code("A18")
+
+        with self.assertRaises(ValueError):
+            _, _ = calc_system_and_unit_code("A0101110101")
+
+        with self.assertRaises(ValueError):
+            _, _ = calc_system_and_unit_code("11B")
+
+        with self.assertRaises(ValueError):
+            _, _ = calc_system_and_unit_code("0000100001")
 
 if __name__ == '__main__':
     unittest.main()
