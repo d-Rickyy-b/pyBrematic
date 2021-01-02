@@ -5,4 +5,4 @@ from .rand import Rand
 from .singleton import singleton
 from .storage import Storage
 
-__all__ = ['singleton', 'Storage', 'DataEncoder', 'Rand']
+__all__ = ["singleton", "Storage", "DataEncoder", "Rand"]

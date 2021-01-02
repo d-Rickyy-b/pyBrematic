@@ -2,4 +2,4 @@
 
 from .GatewayNotSupportedException import GatewayNotSupportedException
 
-__all__ = ['GatewayNotSupportedException']
+__all__ = ["GatewayNotSupportedException"]
