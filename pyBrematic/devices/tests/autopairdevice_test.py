@@ -2,7 +2,8 @@
 
 import unittest
 
-from pyBrematic.devices import AutoPairDevice, Action
+from pyBrematic.action import Action
+from pyBrematic.devices import AutoPairDevice
 from pyBrematic.gateways import BrennenstuhlGateway
 
 

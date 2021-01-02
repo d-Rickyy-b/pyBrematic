@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """This is an example usage file for the pyBrematic module"""
 
-from pyBrematic.devices import Action
+from pyBrematic import Action
 from pyBrematic.devices.brennenstuhl import RCS1000N
 from pyBrematic.devices.intertechno import ITR3500
 from pyBrematic.devices.intertechno import calc_unitcode, calc_systemcode

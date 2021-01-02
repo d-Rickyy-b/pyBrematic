@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from pyBrematic.devices import AutoPairDevice, Action
+from pyBrematic.action import Action
+from pyBrematic.devices import AutoPairDevice
 from pyBrematic.exceptions import GatewayNotSupportedException
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 from pyBrematic.utils import Rand

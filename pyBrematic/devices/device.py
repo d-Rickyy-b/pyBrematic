@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Device class representing a remote-controlled receiver"""
-from .action import Action
+from pyBrematic.action import Action
 
 
 class Device(object):

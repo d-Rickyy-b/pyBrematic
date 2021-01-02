@@ -2,7 +2,7 @@
 
 import unittest
 
-from pyBrematic.devices import Action
+from pyBrematic.action import Action
 from pyBrematic.devices.brennenstuhl import RCR1000N, RCS1000N
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 

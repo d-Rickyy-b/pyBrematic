@@ -2,7 +2,7 @@
 
 import unittest
 
-from pyBrematic.devices import Action
+from pyBrematic.action import Action
 from pyBrematic.devices.elro import AB440SA
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 

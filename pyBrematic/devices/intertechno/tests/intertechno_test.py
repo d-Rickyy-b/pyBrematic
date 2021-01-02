@@ -2,7 +2,7 @@
 
 import unittest
 
-from pyBrematic.devices import Action
+from pyBrematic.action import Action
 from pyBrematic.devices.intertechno import PAR1500, CMR1000, ITR3500
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 

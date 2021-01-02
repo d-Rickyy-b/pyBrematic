@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from pyBrematic.devices import Device, Action
+from pyBrematic.action import Action
+from pyBrematic.devices import Device
 from pyBrematic.gateways import BrennenstuhlGateway, IntertechnoGateway
 
 

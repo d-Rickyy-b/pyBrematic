@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from .action import Action
 from .autopairdevice import AutoPairDevice
 from .device import Device
 
-__all__ = ['Device', 'AutoPairDevice', 'Action']
+# Backwards compatibility
+from pyBrematic.action import Action
+
+__all__ = ["Device", "AutoPairDevice", "Action"]

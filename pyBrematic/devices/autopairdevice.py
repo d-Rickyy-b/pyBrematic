@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Device class representing a remote-controllable receiver"""
 from pyBrematic.utils import Storage
-from .action import Action
+from pyBrematic.action import Action
 
 
 class AutoPairDevice(object):
