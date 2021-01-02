@@ -94,19 +94,19 @@ class TestIntertechnoTools(unittest.TestCase):
         code = calc_unitcode(16)
         self.assertEqual(code, "1111")
 
-    def calc_system_and_unit_code(self):
+    def test_calc_system_and_unit_code(self):
         """Test if combined method does exactly the same as the individual methods"""
         system1, unit1 = calc_system_and_unit_code("A5")
         self.assertEqual(system1, calc_systemcode("A"))
-        self.assertEqual(unit1, calc_systemcode(5))
+        self.assertEqual(unit1, calc_unitcode(5))
 
         system2, unit2 = calc_system_and_unit_code("B11")
         self.assertEqual(system2, calc_systemcode("B"))
-        self.assertEqual(unit2, calc_systemcode(11))
+        self.assertEqual(unit2, calc_unitcode(11))
 
         system3, unit3 = calc_system_and_unit_code("F8")
         self.assertEqual(system3, calc_systemcode("F"))
-        self.assertEqual(unit3, calc_systemcode(8))
+        self.assertEqual(unit3, calc_unitcode(8))
 
 
 if __name__ == '__main__':
