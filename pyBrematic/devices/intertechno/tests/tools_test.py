@@ -128,5 +128,6 @@ class TestIntertechnoTools(unittest.TestCase):
         with self.assertRaises(ValueError):
             _, _ = calc_system_and_unit_code("0000100001")
 
+
 if __name__ == "__main__":
     unittest.main()
