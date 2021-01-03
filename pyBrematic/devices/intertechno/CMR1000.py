@@ -32,6 +32,7 @@ class CMR1000(IntertechnoDevice):
     on = seq_fl + seq_fl
     off = seq_fl + seq_low
     additional = seq_low + seq_fl
+    supported_actions = {Action.ON: on, Action.OFF: off}
 
     def __init__(self, system_code, unit_code):
         super().__init__(system_code, unit_code)

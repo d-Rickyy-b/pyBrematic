@@ -47,6 +47,7 @@ class RCS1000N(Device):
     # Off: 10010 -> encoded: 31131
     on = seq_low + seq_high
     off = seq_high + seq_low
+    supported_actions = {Action.ON: on, Action.OFF: off}
 
     def __init__(self, system_code, unit_code):
         super().__init__(system_code, unit_code)
