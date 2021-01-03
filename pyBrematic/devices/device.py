@@ -16,6 +16,19 @@ class Device(object):
         raise NotImplementedError("Subclasses must implement this method!")
 
     @staticmethod
+    def encode(code, seq_low, seq_high):
+        """Method for encoding the system_code or unit_code from binary to a gateway-readable format"""
+        encoded_msg = []
+        for bit in code:
+            if bit == "0":
+                encoded_msg += seq_high
+            elif bit == "1":
+                encoded_msg += seq_low
+            else:
+                raise ValueError("Invalid value in system_code or unit_code!")
+        return encoded_msg
+
+    @staticmethod
     def join_list(lst, delimeter=","):
         """Join a list together with a certain delimeter
 

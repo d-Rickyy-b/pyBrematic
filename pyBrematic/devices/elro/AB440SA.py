@@ -34,19 +34,6 @@ class AB440SA(Device):
     def __init__(self, system_code, unit_code):
         super().__init__(system_code, unit_code)
 
-    @staticmethod
-    def encode(code, seq_low, seq_high):
-        """Method for encoding the system_code or unit_code from binary to a gateway-readable format"""
-        encoded_msg = ""
-        for bit in code:
-            if bit == "0":
-                encoded_msg += seq_high
-            elif bit == "1":
-                encoded_msg += seq_low
-            else:
-                raise ValueError("Invalid value in system_code or unit_code!")
-        return encoded_msg
-
     def get_signal(self, gateway, action):
         """Returns a signal which triggers a device to execute the intended action"""
         system_msg = self.encode(self.system_code, self.seq_low, self.seq_high)

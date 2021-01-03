@@ -36,24 +36,11 @@ class CMR1000(IntertechnoDevice):
     def __init__(self, system_code, unit_code):
         super().__init__(system_code, unit_code)
 
-    # Method for encoding the system_code or unit_code from binary to a gateway-readable format
-    @staticmethod
-    def encode(code, seq_low, seq_high):
-        encoded_msg = ""
-        for bit in code:
-            if bit == "0":
-                encoded_msg += seq_low
-            elif bit == "1":
-                encoded_msg += seq_high
-            else:
-                raise ValueError("Invalid value in system_code or unit_code!")
-        return encoded_msg
-
     def get_signal(self, gateway, action):
         """Returns a signal which triggers a device to execute the intended action"""
         # Encoding the system_code and unit_code
-        system_msg = self.encode(self.system_code, self.seq_low, self.seq_fl)
-        unit_msg = self.encode(self.unit_code, self.seq_low, self.seq_fl)
+        system_msg = self.encode(self.system_code, self.seq_fl, self.seq_low)
+        unit_msg = self.encode(self.unit_code, self.seq_fl, self.seq_low)
 
         if isinstance(gateway, BrennenstuhlGateway):
             head = self.headBSGW
