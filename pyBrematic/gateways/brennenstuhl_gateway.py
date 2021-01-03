@@ -26,7 +26,7 @@ class BrennenstuhlGateway(Gateway):
 
     def send_request(self, device, action):
         """Sends the UDP request to the gateway"""
-        payload = self.build_udp_payload()
+        payload = self.build_udp_payload(device, action)
 
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.sendto(payload.encode(), (self._ip, self._port))
