@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+import socket
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 
-from pyBrematic.gateways import BrennenstuhlGateway
 from pyBrematic import Action
+from pyBrematic.gateways import BrennenstuhlGateway
 
 
 class TestBrennenstuhlGateway(unittest.TestCase):
@@ -58,6 +59,28 @@ class TestBrennenstuhlGateway(unittest.TestCase):
         self.gw.tail_format = None
         with self.assertRaises(ValueError):
             _ = self.gw.get_tail("1", "2")
+
+    @patch("socket.socket")
+    def test_send_request(self, socket_class_mock):
+        device_mock = Mock()
+        # Mock method to prevent issues with that
+        build_udp_payload_mock = Mock()
+        payload_mock = Mock()
+        # Since "encode" is being called on the payload object later on, we need to set a return value
+        payload_mock.encode.return_value = "Test Payload"
+        build_udp_payload_mock.return_value = payload_mock
+        self.gw.build_udp_payload = build_udp_payload_mock
+        action_mock = Mock()
+
+        socket_instance_mock = Mock()
+        socket_class_mock.return_value = socket_instance_mock
+
+        self.gw.send_request(device_mock, action_mock)
+
+        build_udp_payload_mock.assert_called_once_with(device_mock, action_mock)
+
+        socket_class_mock.assert_called_once_with(socket.AF_INET, socket.SOCK_DGRAM)
+        socket_instance_mock.sendto.assert_called_once_with("Test Payload", (self.ip, self.port))
 
 
 if __name__ == '__main__':
