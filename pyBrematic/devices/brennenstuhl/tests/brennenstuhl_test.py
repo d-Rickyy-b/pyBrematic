@@ -20,57 +20,43 @@ class TestBrennenstuhl(unittest.TestCase):
         """Test to check the functionality of the RCR1000N class"""
         dev = RCR1000N("10000", "00100")
 
-        on_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,32,0"
-        off_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,32,0"
+        on_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1"
+        off_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3"
 
-        self.assertEqual(on_signal_ITGW, dev.get_signal(self.itgw, Action.ON))
-        self.assertEqual(off_signal_ITGW, dev.get_signal(self.itgw, Action.OFF))
-
-        on_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,16;"
-        off_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,16;"
-
-        self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Action.ON))
-        self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Action.OFF))
+        self.assertEqual(on_signal, dev.get_signal(Action.ON))
+        self.assertEqual(off_signal, dev.get_signal(Action.OFF))
 
     def test_RCR1000N_10000_00000(self):
         """Test to check the functionality of the RCR1000N class"""
         # Taken from https://github.com/Power-Switch/PowerSwitch_Android/blob/54400f74230bb78f87b19cc89c0f174e080a3fa7/Smartphone/src/androidTest/java/eu/power_switch/obj/device/brennenstuhl/RCS1000NComfort_Test.java#L97
         dev = RCR1000N("10000", "00000")
 
-        on_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,32,0"
-        off_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,32,0"
+        on_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1"
+        off_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3"
 
-        self.assertEqual(on_signal_ITGW, dev.get_signal(self.itgw, Action.ON))
-        self.assertEqual(off_signal_ITGW, dev.get_signal(self.itgw, Action.OFF))
-
-        on_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,16;"
-        off_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,16;"
-
-        self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Action.ON))
-        self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Action.OFF))
+        self.assertEqual(on_signal, dev.get_signal(Action.ON))
+        self.assertEqual(off_signal, dev.get_signal(Action.OFF))
 
     def test_RCR1000N_10000_10000(self):
         """Test to check the functionality of the RCR1000N class"""
         dev = RCR1000N("10000", "10000")
 
-        on_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,16;"
-        off_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,16;"
+        on_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1"
+        off_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3"
 
-        self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Action.ON))
-        self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Action.OFF))
+        self.assertEqual(on_signal, dev.get_signal(Action.ON))
+        self.assertEqual(off_signal, dev.get_signal(Action.OFF))
 
     def test_RCS1000N(self):
         """Test to check the functionality of the RCS1000N class"""
         dev = RCS1000N("10000", "00100")
 
-        on_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,32,0"
-        off_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,32,0"
+        on_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1"
+        off_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3"
 
-        self.assertEqual(on_signal_ITGW, dev.get_signal(self.itgw, Action.ON))
-        self.assertEqual(off_signal_ITGW, dev.get_signal(self.itgw, Action.OFF))
+        self.assertEqual(on_signal, dev.get_signal(Action.ON))
+        self.assertEqual(off_signal, dev.get_signal(Action.OFF))
 
-        on_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,16;"
-        off_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,16;"
 
-        self.assertEqual(on_signal_BSGW, dev.get_signal(self.bsgw, Action.ON))
-        self.assertEqual(off_signal_BSGW, dev.get_signal(self.bsgw, Action.OFF))
+if __name__ == "__main__":
+    unittest.main()

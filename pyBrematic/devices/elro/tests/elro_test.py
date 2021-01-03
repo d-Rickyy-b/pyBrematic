@@ -21,14 +21,14 @@ class TestElro(unittest.TestCase):
         unit_code = "00100"
         device = AB440SA(system_code=system_code, unit_code=unit_code)
 
-        on_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,32,0"
-        off_signal_ITGW = "0,0,10,11200,350,26,0,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,32,0"
+        on_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1"
+        off_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3"
 
-        self.assertEqual(device.get_signal(self.itgw, Action.ON), on_signal_ITGW)
-        self.assertEqual(device.get_signal(self.itgw, Action.OFF), off_signal_ITGW)
+        self.assertEqual(device.get_signal(Action.ON), on_signal)
+        self.assertEqual(device.get_signal(Action.OFF), off_signal)
 
-        on_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,14;"
-        off_signal_BSGW = "TXP:0,0,10,5600,350,25,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,14;"
+        on_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1"
+        off_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3"
 
-        self.assertEqual(device.get_signal(self.bsgw, Action.ON), on_signal_BSGW)
-        self.assertEqual(device.get_signal(self.bsgw, Action.OFF), off_signal_BSGW)
+        self.assertEqual(device.get_signal(Action.ON), on_signal)
+        self.assertEqual(device.get_signal(Action.OFF), off_signal)

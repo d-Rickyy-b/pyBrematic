@@ -22,6 +22,16 @@ class AutoPairDevice(object):
         storage = Storage()
         self.seed = seed or storage.get_seed(device_id)
 
-    def get_signal(self, gateway, action):
+    def get_signal(self, action):
         """Returns a signal which triggers a device to execute the intended action"""
         raise NotImplementedError("Subclasses must implement this method!")
+
+    @staticmethod
+    def join_list(lst, delimeter=","):
+        """Join a list together with a certain delimeter
+
+        :param lst: The list to join
+        :param delimeter: The delimeter to use to join the list elements
+        :return:
+        """
+        return delimeter.join(lst)
