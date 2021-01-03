@@ -13,6 +13,11 @@ class TestIntertechnoGateway(unittest.TestCase):
         self.port = "1234"
         self.gw = IntertechnoGateway(self.ip, self.port)
 
+    def test_default_port(self):
+        """Test if default port is correctly set"""
+        self.gw = IntertechnoGateway(self.ip)
+        self.assertEqual(49880, self.gw._port)
+
     def test_build_udp_payload(self):
         """Test if building the UDP payload for the Intertechno GW works correctly"""
         device = Mock()
