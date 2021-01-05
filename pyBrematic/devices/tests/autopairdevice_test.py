@@ -2,7 +2,8 @@
 
 import unittest
 
-from pyBrematic.devices import AutoPairDevice, Action
+from pyBrematic.action import Action
+from pyBrematic.devices import AutoPairDevice
 from pyBrematic.gateways import BrennenstuhlGateway
 
 
@@ -18,4 +19,4 @@ class TestAutoPairDevice(unittest.TestCase):
         """Test to make sure that call to method raises an exception"""
         dev = AutoPairDevice("10000", "00100")
         with self.assertRaises(NotImplementedError):
-            dev.get_signal(self.gw, Action.ON)
+            dev.get_signal(Action.ON)

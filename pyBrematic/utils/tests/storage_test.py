@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
+import logging
 import unittest
 
 from pyBrematic.utils import Storage
@@ -99,6 +100,8 @@ class TestStorage(unittest.TestCase):
         self.assertEqual(dev.seed, seed)
 
     def test_duplicate_storage(self):
+        # Set log-level to "ERROR" to prevent text output during test execution
+        logging.getLogger().setLevel(logging.ERROR)
         self.storage.add_device(1337)
         self.assertEqual(1, len(self.storage.devices))
 
