@@ -5,7 +5,7 @@ name: Run tests and lint
 
 on:
   push:
-    branches: [ master, dev, gh-actions-coveralls ]
+    branches: [ master, dev ]
   pull_request:
     branches: [ master ]
 
