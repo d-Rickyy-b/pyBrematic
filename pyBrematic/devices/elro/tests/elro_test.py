@@ -24,14 +24,14 @@ class TestElro(unittest.TestCase):
         on_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1"
         off_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3"
 
-        self.assertEqual(device.get_signal(Action.ON), on_signal)
-        self.assertEqual(device.get_signal(Action.OFF), off_signal)
+        self.assertEqual(on_signal, device.get_signal(Action.ON))
+        self.assertEqual(off_signal, device.get_signal(Action.OFF))
 
         on_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1"
         off_signal = "1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3,1,3,3,1,1,3,3,1,1,3,3,1,1,3,1,3"
 
-        self.assertEqual(device.get_signal(Action.ON), on_signal)
-        self.assertEqual(device.get_signal(Action.OFF), off_signal)
+        self.assertEqual(on_signal, device.get_signal(Action.ON))
+        self.assertEqual(off_signal, device.get_signal(Action.OFF))
 
     def test_invalid_action(self):
         """Test to check if invalid actions raise an exception"""
