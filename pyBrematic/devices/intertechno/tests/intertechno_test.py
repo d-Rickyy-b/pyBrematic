@@ -55,6 +55,23 @@ class TestIntertechno(unittest.TestCase):
         self.assertEqual(on_signal, dev.get_signal(Action.ON))
         self.assertEqual(off_signal, dev.get_signal(Action.OFF))
 
+    def test_invalid_action(self):
+        """Test to check if invalid actions raise an exception"""
+        device = CMR1000("0000", "0010")
+
+        with self.assertRaises(ValueError):
+            _ = device.get_signal("WrongAction!")
+
+    def test_valid_action(self):
+        """Test to check if valid actions are set up correctly"""
+        device = CMR1000("0000", "0010")
+
+        self.assertIsNotNone(device.supported_actions.get(Action.ON))
+        self.assertIsNotNone(device.supported_actions.get(Action.OFF))
+
+        self.assertEqual(device.on, device.supported_actions.get(Action.ON))
+        self.assertEqual(device.off, device.supported_actions.get(Action.OFF))
+
     def test_ITR3500(self):
         """Test to check the functionality of the ITR3500 class"""
         dev = ITR3500("0000", "0010")  # binary representation of A5

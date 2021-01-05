@@ -57,6 +57,26 @@ class TestBrennenstuhl(unittest.TestCase):
         self.assertEqual(on_signal, dev.get_signal(Action.ON))
         self.assertEqual(off_signal, dev.get_signal(Action.OFF))
 
+    def test_invalid_action(self):
+        """Test to check if invalid actions raise an exception"""
+        system_code = "10000"
+        unit_code = "00100"
+        device = RCS1000N(system_code=system_code, unit_code=unit_code)
+
+        with self.assertRaises(ValueError):
+            _ = device.get_signal("WrongAction!")
+
+    def test_valid_action(self):
+        """Test to check if valid actions are set up correctly"""
+        system_code = "10000"
+        unit_code = "00100"
+        device = RCS1000N(system_code=system_code, unit_code=unit_code)
+
+        self.assertIsNotNone(device.supported_actions.get(Action.ON))
+        self.assertIsNotNone(device.supported_actions.get(Action.OFF))
+
+        self.assertEqual(device.on, device.supported_actions.get(Action.ON))
+        self.assertEqual(device.off, device.supported_actions.get(Action.OFF))
 
 if __name__ == "__main__":
     unittest.main()
