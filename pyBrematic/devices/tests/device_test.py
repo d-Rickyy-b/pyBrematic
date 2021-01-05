@@ -19,3 +19,18 @@ class TestDevice(unittest.TestCase):
         dev = Device("10000", "00100")
         with self.assertRaises(NotImplementedError):
             dev.get_signal(Action.ON)
+
+    def test_encode_error(self):
+        dev = Device("10000", "00100")
+        with self.assertRaises(ValueError):
+            dev.encode("000123000", "A", "B")
+
+    def test_encode(self):
+        dev = Device("10000", "00100")
+        encoded = dev.encode("000111", "A", "B")
+        self.assertEqual(list, type(encoded))
+        self.assertEqual(["B", "B", "B", "A", "A", "A"], encoded)
+
+
+if __name__ == "__main__":
+    unittest.main()
