@@ -25,16 +25,18 @@ class TestBrennenstuhlGateway(unittest.TestCase):
         device.repeat = 123
         device.pause_BS = 987
         device.tune = 567
-        device.baud = 999
+        device.baud_BS = 999
         device.txversion = 1
         device.speed_BS = 234
 
-        function = Mock()
-        function.return_value = "SIGNAL-A,B,B,A-SIGNAL"
-        device.get_signal = function
+        get_signal_mock = Mock()
+        get_signal_mock.return_value = "SIGNAL-A,B,B,A-SIGNAL"
+        device.get_signal = get_signal_mock
 
         payload = self.gw.build_udp_payload(device, Action.ON)
         self.assertEqual("TXP:0,0,123,987,567,999,SIGNAL-A,B,B,A-SIGNAL,1,234;", payload)
+        get_signal_mock.assert_called_once_with(Action.ON)
+
 
     def test_get_head(self):
         """Test if formatting the 'head' string works with random data"""

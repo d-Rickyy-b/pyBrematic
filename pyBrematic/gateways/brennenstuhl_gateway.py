@@ -18,9 +18,9 @@ class BrennenstuhlGateway(Gateway):
         self.tail_format = "{0},{1};"
 
     def build_udp_payload(self, device, action):
-        head = self.get_head(device.repeat, device.pause_BS, device.tune, device.baud)
+        head = self.get_head(device.repeat, device.pause_BS, device.tune, device.baud_BS)
         tail = self.get_tail(device.txversion, device.speed_BS)
-        payload = device.get_signal(self, action)
+        payload = device.get_signal(action)
 
         return ",".join([head, payload, tail])
 

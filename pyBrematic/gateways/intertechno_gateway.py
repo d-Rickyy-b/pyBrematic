@@ -18,9 +18,9 @@ class IntertechnoGateway(Gateway):
         self.tail_format = "{0},{1}"
 
     def build_udp_payload(self, device, action):
-        head = self.get_head(device.repeat, device.pause_IT, device.tune, device.baud)
+        head = self.get_head(device.repeat, device.pause_IT, device.tune, device.baud_IT)
         tail = self.get_tail(device.txversion, device.speed_IT)
-        payload = device.get_signal(self, action)
+        payload = device.get_signal(action)
 
         return ",".join([head, payload, tail])
 
