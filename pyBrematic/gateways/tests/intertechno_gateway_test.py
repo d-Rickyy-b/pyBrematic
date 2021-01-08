@@ -26,17 +26,18 @@ class TestIntertechnoGateway(unittest.TestCase):
         device.pause_BS = 917
         device.pause_IT = 111
         device.tune = 557
-        device.baud = 91919
+        device.baud_IT = 91919
         device.txversion = 1
         device.speed_BS = 234
         device.speed_IT = 432
 
-        function = Mock()
-        function.return_value = "A,SIGNAL-A,B,B,A-SIGNAL,C"
-        device.get_signal = function
+        get_signal_mock = Mock()
+        get_signal_mock.return_value = "A,SIGNAL-A,B,B,A-SIGNAL,C"
+        device.get_signal = get_signal_mock
 
         payload = self.gw.build_udp_payload(device, Action.ON)
         self.assertEqual("0,0,2345,111,557,91919,A,SIGNAL-A,B,B,A-SIGNAL,C,1,432", payload)
+        get_signal_mock.assert_called_once_with(Action.ON)
 
     def test_get_head(self):
         """Test if formatting the 'head' string works with random data"""
