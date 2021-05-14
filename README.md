@@ -1,6 +1,7 @@
 [![pyBrematic logo](https://raw.githubusercontent.com/d-Rickyy-b/pyBrematic/master/docs/pyBrematic_logo.png)](https://github.com/d-Rickyy-b/pyBrematic)
 
-[![Build Status](https://travis-ci.com/d-Rickyy-b/pyBrematic.svg?branch=master)](https://travis-ci.com/d-Rickyy-b/pyBrematic)
+# pyBrematic
+[![Run tests and lint](https://github.com/d-Rickyy-b/pyBrematic/actions/workflows/python-lint-test.yml/badge.svg)](https://github.com/d-Rickyy-b/pyBrematic/actions/workflows/python-lint-test.yml)
 [![PyPI version](https://badge.fury.io/py/pyBrematic.svg)](https://pypi.org/project/pyBrematic)
 [![Coverage Status](https://coveralls.io/repos/github/d-Rickyy-b/pyBrematic/badge.svg?branch=master)](https://coveralls.io/github/d-Rickyy-b/pyBrematic?branch=master)
 
