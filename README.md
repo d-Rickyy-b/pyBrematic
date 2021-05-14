@@ -1,6 +1,7 @@
-# pyBrematic
+[![pyBrematic logo](https://raw.githubusercontent.com/d-Rickyy-b/pyBrematic/master/docs/pyBrematic_logo.png)](https://github.com/d-Rickyy-b/pyBrematic)
 
-[![Build Status](https://travis-ci.com/d-Rickyy-b/pyBrematic.svg?branch=master)](https://travis-ci.com/d-Rickyy-b/pyBrematic)
+# pyBrematic
+[![Run tests and lint](https://github.com/d-Rickyy-b/pyBrematic/actions/workflows/python-lint-test.yml/badge.svg)](https://github.com/d-Rickyy-b/pyBrematic/actions/workflows/python-lint-test.yml)
 [![PyPI version](https://badge.fury.io/py/pyBrematic.svg)](https://pypi.org/project/pyBrematic)
 [![Coverage Status](https://coveralls.io/repos/github/d-Rickyy-b/pyBrematic/badge.svg?branch=master)](https://coveralls.io/github/d-Rickyy-b/pyBrematic?branch=master)
 
@@ -13,7 +14,7 @@ basically the same as the Brematic one).
 
 With the help of the community we might get other devices working as well.
 
-### Installation
+## Installation
 
 This module is available on pypi and hence can be downloaded via pip like this:
 
@@ -23,7 +24,7 @@ And if you are having issues with installing the package, try to use the `--user
 to [install it to your home directory](https://stackoverflow.com/questions/42988977/what-is-the-purpose-pip-install-user).  
 PyBrematic has no external dependencies. Only Python versions >= 3.5 are supported.
 
-### Example usage
+## Example usage
 
 To check out how to use the module, go to the [example file](https://github.com/d-Rickyy-b/pyBrematic/blob/master/pyBrematic/example/example.py). There you'll
 find an example configuration of how to use the module.
@@ -54,7 +55,7 @@ gw.send_request(desk_lamp, Action.ON)
 gw.send_request(desk_lamp, Action.OFF)
 ```
 
-### Important notice
+## Important notice
 
 Since all data packets are sent to the gateways via [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol), it cannot be guaranteed, that all requests
 will be received by the gateway. For critical purposes you cannot rely on sending the signal once.

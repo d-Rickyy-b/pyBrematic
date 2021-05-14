@@ -84,5 +84,5 @@ class TestConnAirGateway(unittest.TestCase):
         socket_instance_mock.sendto.assert_called_once_with("Test Payload", (self.ip, self.port))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
