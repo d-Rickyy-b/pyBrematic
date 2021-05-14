@@ -1,4 +1,4 @@
-# pyBrematic
+[![pyBrematic logo](https://raw.githubusercontent.com/d-Rickyy-b/pyBrematic/master/docs/pyBrematic_logo.png)](https://github.com/d-Rickyy-b/pyBrematic)
 
 [![Build Status](https://travis-ci.com/d-Rickyy-b/pyBrematic.svg?branch=master)](https://travis-ci.com/d-Rickyy-b/pyBrematic)
 [![PyPI version](https://badge.fury.io/py/pyBrematic.svg)](https://pypi.org/project/pyBrematic)
