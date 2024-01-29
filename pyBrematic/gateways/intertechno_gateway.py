@@ -14,8 +14,8 @@ class IntertechnoGateway(Gateway):
         # For the Intertechno GWY 433 the parameters look like that:
         # head: "0,0,<repeat>,<pause>,<tune>,<baud>"
         # tail: "<txversion>,<speed>"
-        self.head_format = "0,0,{0},{1},{2},{3}"
-        self.tail_format = "{0},{1}"
+        self.head_format = "0,0,{0},{1},{2},{3},0"
+        self.tail_format = "{0},{1},0"
 
     def build_udp_payload(self, device, action):
         head = self.get_head(device.repeat, device.pause_IT, device.tune, device.baud_IT)
