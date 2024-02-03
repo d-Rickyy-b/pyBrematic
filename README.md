@@ -5,6 +5,9 @@
 [![PyPI version](https://badge.fury.io/py/pyBrematic.svg)](https://pypi.org/project/pyBrematic)
 [![Coverage Status](https://coveralls.io/repos/github/d-Rickyy-b/pyBrematic/badge.svg?branch=master)](https://coveralls.io/github/d-Rickyy-b/pyBrematic?branch=master)
 
+> [!IMPORTANT]
+> Since I stopped using 433 MHz devices, this project is no longer under active development. While I'll make an effort to address any bugs you encounter, please note that I won't be introducing new features moving forward.
+
 The topic "smart home" or "home automation" in particular has become increasingly popular throughout the last few years. While many manufacturers are relying
 on cloud infrastructure, there are some that produce local-only devices, using the 433 MHz ISM band.
 

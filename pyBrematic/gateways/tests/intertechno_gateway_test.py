@@ -36,7 +36,7 @@ class TestIntertechnoGateway(unittest.TestCase):
         device.get_signal = get_signal_mock
 
         payload = self.gw.build_udp_payload(device, Action.ON)
-        self.assertEqual("0,0,2345,111,557,91919,A,SIGNAL-A,B,B,A-SIGNAL,C,1,432", payload)
+        self.assertEqual("0,0,2345,111,557,91919,0,A,SIGNAL-A,B,B,A-SIGNAL,C,1,432,0", payload)
         get_signal_mock.assert_called_once_with(Action.ON)
 
     def test_get_head(self):
